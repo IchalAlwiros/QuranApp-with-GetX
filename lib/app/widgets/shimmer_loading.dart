@@ -9,8 +9,8 @@ class ShimmerSkelton extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Skeleton(height: 60, width: 60),
-          SizedBox(width: 16.0),
+          const Skeleton(height: 50, width: 50),
+          const SizedBox(width: 16.0),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,8 +18,8 @@ class ShimmerSkelton extends StatelessWidget {
                 // const Skeleton(width: 80, height: 10),
                 const SizedBox(height: 16.0 / 2),
                 Row(
-                  children: [
-                    const Skeleton(
+                  children: const [
+                    Skeleton(
                       width: 100,
                       height: 20,
                     ),
@@ -82,8 +82,8 @@ class SkeltonWrite extends StatelessWidget {
     return Row(
       children: [
         Row(
-          children: [
-            const Skeleton(
+          children: const [
+            Skeleton(
               width: 20,
               height: 20,
             ),

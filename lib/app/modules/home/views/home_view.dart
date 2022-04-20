@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quran_app/app/routes/app_pages.dart';
+import 'package:flutter_quran_app/app/theme/theme.dart';
+import 'package:flutter_quran_app/app/widgets/shimmer_loading.dart';
 
 import 'package:get/get.dart';
 
@@ -11,16 +13,26 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        backgroundColor: kBackgroundColor,
+        title: Text(
+          'Quran Apps',
+          style: whiteTextStyle.copyWith(
+            fontWeight: bold,
+            fontSize: 18,
+          ),
+        ),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Surah>>(
         future: controller.getAllSurah(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return ListView.separated(
+                itemBuilder: (context, index) => ShimmerSkelton(),
+                separatorBuilder: (context, index) => const SizedBox(
+                      height: 10,
+                    ),
+                itemCount: 8);
           }
 
           if (!snapshot.hasData) {
@@ -35,12 +47,33 @@ class HomeView extends GetView<HomeController> {
                   Get.toNamed(Routes.DETAIL_SURAH, arguments: surah);
                 },
                 leading: CircleAvatar(
-                  child: Text("${surah.number}"),
+                  backgroundColor: kInactiveColor,
+                  child: Text(
+                    "${surah.number}",
+                    style: whiteTextStyle.copyWith(
+                      fontWeight: bold,
+                    ),
+                  ),
                 ),
-                title: Text('${surah.name?.translation?.id ?? " Error ... "}'),
+                title: Text(
+                  '${surah.name?.translation?.id ?? " Error ... "}',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: semiBold,
+                  ),
+                ),
                 subtitle: Text(
-                    "${surah.numberOfVerses} Ayat | ${surah.revelation?.id ?? "Error..."} "),
-                trailing: Text("${surah.name?.short ?? "Error..."}"),
+                  "${surah.numberOfVerses} Ayat | ${surah.revelation?.id ?? "Error..."} ",
+                  style: blackTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                ),
+                trailing: Text(
+                  "${surah.name?.short ?? "Error..."}",
+                  style: blackTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                ),
               );
             },
           );

@@ -56,7 +56,7 @@ class IntroductionView extends GetView<IntroductionController> {
                     height: 55,
                     width: MediaQuery.of(context).size.width / 2,
                     decoration: BoxDecoration(
-                      color: Colors.amber,
+                      color: kBackgroundColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
