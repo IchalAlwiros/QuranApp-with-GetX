@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/shared/theme.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../theme/theme.dart';
 
 class Skeleton extends StatelessWidget {
   const Skeleton({required this.height, required this.width});
