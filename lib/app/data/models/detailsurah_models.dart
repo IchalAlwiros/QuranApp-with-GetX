@@ -142,9 +142,9 @@ class Audio {
 
   factory Audio.fromJson(Map<String, dynamic>? json) => Audio(
         primary: json?["primary"],
-        secondary: json!["secondary"] == null
+        secondary: json?["secondary"] == null
             ? null
-            : List<String>.from(json["secondary"].map((x) => x)),
+            : List<String>.from(json?["secondary"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
