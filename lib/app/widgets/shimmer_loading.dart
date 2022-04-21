@@ -82,10 +82,10 @@ class SkeltonWrite extends StatelessWidget {
     return Row(
       children: [
         Row(
-          children: const [
+          children: [
             Skeleton(
-              width: 20,
-              height: 20,
+              width: MediaQuery.of(context).size.width,
+              height: 50,
             ),
           ],
         )
