@@ -57,7 +57,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: LoadingAnimationWidget.staggeredDotsWave(
-                    color: kGrennColor,
+                    color: kPurpleLightColor,
                     size: 40.0,
                   ),
                 );

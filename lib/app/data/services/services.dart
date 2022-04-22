@@ -25,4 +25,6 @@ void services() async {
   DetailSurah annas = DetailSurah.fromJson(dataAnnas);
 
   // print(annas.verses![0].text!.arab);
+
+  //Ayat
 }

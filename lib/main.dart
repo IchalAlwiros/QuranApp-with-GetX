@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quran_app/app/theme/theme.dart';
 
 import 'package:get/get.dart';
 
@@ -7,6 +8,7 @@ import 'app/routes/app_pages.dart';
 void main() {
   runApp(
     GetMaterialApp(
+      theme: appLight,
       debugShowCheckedModeBanner: false,
       title: "Application",
       initialRoute: Routes.INTRODUCTION,

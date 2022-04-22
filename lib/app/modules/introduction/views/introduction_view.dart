@@ -17,9 +17,9 @@ class IntroductionView extends GetView<IntroductionController> {
           children: [
             Text(
               'Alquran Apps',
-              style: blackTextStyle.copyWith(
+              style: defaultTextStyle.copyWith(
+                fontSize: 18,
                 fontWeight: semiBold,
-                fontSize: 25,
               ),
             ),
             const SizedBox(height: 20),
@@ -28,19 +28,20 @@ class IntroductionView extends GetView<IntroductionController> {
                 horizontal: 20,
               ),
               child: Text(
-                'Bacalah dan pahamilah makna \nalquran dalam kehidupanmu',
-                textAlign: TextAlign.center,
-                style: blackTextStyle.copyWith(
-                  fontWeight: medium,
-                  fontSize: 16,
-                ),
-              ),
+                  'Bacalah dan pahamilah makna \nalquran dalam kehidupanmu',
+                  textAlign: TextAlign.center,
+                  style: defaultTextStyle.copyWith(
+                    fontSize: 16,
+                  )),
             ),
             const SizedBox(height: 20),
-            Container(
-              width: 250,
-              height: 250,
-              child: Lottie.asset("assets/animasi_quran.json"),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(25),
+              child: Container(
+                width: 250,
+                height: 250,
+                child: Lottie.asset("assets/animasi_quran.json"),
+              ),
             ),
             const SizedBox(height: 100),
             ClipRRect(
@@ -56,13 +57,13 @@ class IntroductionView extends GetView<IntroductionController> {
                     height: 55,
                     width: MediaQuery.of(context).size.width / 2,
                     decoration: BoxDecoration(
-                      color: kBackgroundColor,
+                      color: Get.isDarkMode ? kWhiteColor : kBackgroundColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
                       child: Text(
                         'Get Started',
-                        style: whiteTextStyle.copyWith(
+                        style: defaultTextStyle.copyWith(
                           fontWeight: semiBold,
                         ),
                       ),
