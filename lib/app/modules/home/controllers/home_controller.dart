@@ -3,10 +3,21 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../../../data/models/surah_models.dart';
+import '../../../theme/theme.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-  RxBool isDark = false.obs;
+  RxBool isDarkMode = false.obs;
+  // bool isDarkMode = true;
+  void toggleDarkMode() {
+    // isDarkMode = !isDarkMode.i;
+    if (isDarkMode.value) {
+      Get.changeTheme(themeDark);
+    } else {
+      Get.changeTheme(themeLight);
+    }
+    update();
+  }
 
   Future<List<Surah>> getAllSurah() async {
     Uri url = Uri.parse('https://api.quran.sutanlab.id/surah/');

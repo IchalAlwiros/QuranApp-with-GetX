@@ -13,7 +13,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     if (Get.isDarkMode) {
-      controller.isDark.value = true;
+      controller.isDarkMode.value = true;
     }
 
     return Scaffold(
@@ -203,9 +203,10 @@ class HomeView extends GetView<HomeController> {
                                   width: 50,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
-                                      image: AssetImage(controller.isDark.isTrue
-                                          ? 'assets/number.png'
-                                          : 'assets/number_dark.png'),
+                                      image: AssetImage(
+                                          controller.isDarkMode.isTrue
+                                              ? 'assets/number.png'
+                                              : 'assets/number_dark.png'),
                                     ),
                                   ),
                                   child: Center(
@@ -224,25 +225,27 @@ class HomeView extends GetView<HomeController> {
                             // ),
                             title: Text(
                               '${surah.name?.translation?.id ?? " Error ... "}',
-                              // style: defaultTextStyle.copyWith(
-                              //   fontSize: 16,
-                              //   fontWeight: semiBold,
-                              //   color:
-                              //       Get.isDarkMode ? kWhiteColor : kBlackColor,
-                              // ),
+                              style: defaultTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: semiBold,
+                                // color:
+                                //     Get.isDarkMode ? kWhiteColor : kBlackColor,
+                              ),
                             ),
                             subtitle: Text(
                               "${surah.numberOfVerses} Ayat | ${surah.revelation?.id ?? "Error..."} ",
                               style: defaultTextStyle.copyWith(
-                                  fontWeight: medium, color: kGreyColor),
+                                fontWeight: medium,
+                                // color: kGreyColor,
+                              ),
                             ),
                             trailing: Text(
                               "${surah.name?.short ?? "Error..."}",
-                              // style: blackTextStyle.copyWith(
-                              //   fontWeight: medium,
-                              //   color:
-                              //       Get.isDarkMode ? kWhiteColor : kBlackColor,
-                              // ),
+                              style: blackTextStyle.copyWith(
+                                fontWeight: medium,
+                                // color:
+                                //     Get.isDarkMode ? kWhiteColor : kBlackColor,
+                              ),
                             ),
                           );
                         },
@@ -259,9 +262,10 @@ class HomeView extends GetView<HomeController> {
                                 width: 50,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage(controller.isDark.isTrue
-                                        ? 'assets/number.png'
-                                        : 'assets/number_dark.png'),
+                                    image: AssetImage(
+                                        controller.isDarkMode.isTrue
+                                            ? 'assets/number.png'
+                                            : 'assets/number_dark.png'),
                                   ),
                                 ),
                                 child: Center(
@@ -307,7 +311,11 @@ class HomeView extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.isDark.toggle();
+          controller.isDarkMode.toggle();
+          if (Get.isDarkMode)
+            Get.changeThemeMode(ThemeMode.light);
+          else
+            Get.changeThemeMode(ThemeMode.dark);
           // Get.isDarkMode
           //     ? Get.changeTheme(themeLight)
           //     : Get.changeTheme(themeDark);
