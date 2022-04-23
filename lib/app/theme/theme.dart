@@ -17,27 +17,69 @@ Color kAvailableColor = Color(0xffE0D9FF);
 
 Color kTransparantColor = Colors.transparent;
 
-ThemeData appLight = ThemeData(
-    primaryColor: kBackgroundColor,
-    scaffoldBackgroundColor: kWhiteColor,
-    appBarTheme: AppBarTheme(
-      backgroundColor: kInactiveColor,
-    ));
-
-ThemeData appDark = ThemeData(
-    primaryColor: kBackgroundColor,
-    scaffoldBackgroundColor: kDarkPurple,
-    appBarTheme: AppBarTheme(
-      backgroundColor: kDarkPurple,
+ThemeData themeLight = ThemeData(
+  brightness: Brightness.light,
+  primaryColor: kBackgroundColor,
+  scaffoldBackgroundColor: kWhiteColor,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: kInactiveColor,
+  ),
+  appBarTheme: AppBarTheme(
+    elevation: 4,
+    backgroundColor: kInactiveColor,
+  ),
+  textTheme: TextTheme(
+    bodyText1: GoogleFonts.poppins(
+      color: kBlackColor,
     ),
-    textTheme: TextTheme(
-      bodyText1: GoogleFonts.poppins(
-        color: kWhiteColor,
+    bodyText2: GoogleFonts.poppins(
+      color: kBlackColor,
+    ),
+  ),
+  listTileTheme: ListTileThemeData(textColor: kInactiveColor),
+  tabBarTheme: TabBarTheme(
+    indicator: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(color: kInactiveColor),
       ),
-      bodyText2: GoogleFonts.poppins(
-        color: kWhiteColor,
+    ),
+    labelColor: kPrimaryColor,
+    unselectedLabelColor: kGreyColor,
+  ),
+);
+
+ThemeData themeDark = ThemeData(
+  brightness: Brightness.dark,
+  primaryColor: kBackgroundColor,
+  scaffoldBackgroundColor: kDarkPurple,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: kBackgroundColor,
+  ),
+  appBarTheme: AppBarTheme(
+    elevation: 0,
+    backgroundColor: kDarkPurple,
+  ),
+  textTheme: TextTheme(
+    bodyText1: GoogleFonts.poppins(
+      color: kWhiteColor,
+    ),
+    bodyText2: GoogleFonts.poppins(
+      color: kWhiteColor,
+    ),
+  ),
+  listTileTheme: ListTileThemeData(
+    textColor: kWhiteColor,
+  ),
+  tabBarTheme: TabBarTheme(
+    indicator: BoxDecoration(
+      border: Border(
+        bottom: BorderSide(color: kInactiveColor),
       ),
-    ));
+    ),
+    labelColor: kWhiteColor,
+    unselectedLabelColor: kGreyColor,
+  ),
+);
 
 double defaultMargin = 24.0;
 double defaultRadius = 17.0;

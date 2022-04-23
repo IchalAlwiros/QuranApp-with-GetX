@@ -65,6 +65,7 @@ class IntroductionView extends GetView<IntroductionController> {
                         'Get Started',
                         style: defaultTextStyle.copyWith(
                           fontWeight: semiBold,
+                          color: Get.isDarkMode ? kBlackColor : kWhiteColor,
                         ),
                       ),
                     ),

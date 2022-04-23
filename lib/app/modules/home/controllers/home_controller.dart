@@ -6,6 +6,8 @@ import '../../../data/models/surah_models.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
+  RxBool isDark = false.obs;
+
   Future<List<Surah>> getAllSurah() async {
     Uri url = Uri.parse('https://api.quran.sutanlab.id/surah/');
     var response = await http.get(url);
