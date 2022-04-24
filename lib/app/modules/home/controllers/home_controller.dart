@@ -8,16 +8,6 @@ import '../../../theme/theme.dart';
 class HomeController extends GetxController {
   //TODO: Implement HomeController
   RxBool isDarkMode = false.obs;
-  // bool isDarkMode = true;
-  void toggleDarkMode() {
-    // isDarkMode = !isDarkMode.i;
-    if (isDarkMode.value) {
-      Get.changeTheme(themeDark);
-    } else {
-      Get.changeTheme(themeLight);
-    }
-    update();
-  }
 
   Future<List<Surah>> getAllSurah() async {
     Uri url = Uri.parse('https://api.quran.sutanlab.id/surah/');
