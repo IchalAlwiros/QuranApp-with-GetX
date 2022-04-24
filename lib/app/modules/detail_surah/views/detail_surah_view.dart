@@ -1,11 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_quran_app/app/data/models/detailsurah_models.dart'
     as detail;
 import 'package:flutter_quran_app/app/data/models/surah_models.dart';
 import 'package:flutter_quran_app/app/theme/theme.dart';
-import 'package:flutter_quran_app/app/widgets/shimmer_loading.dart';
 
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -43,6 +40,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         "Tafsir ${surah.name?.translation!.id!.toLowerCase() ?? "error"}",
