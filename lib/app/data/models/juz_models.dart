@@ -1,15 +1,15 @@
 //API URL : https://api.quran.sutanlab.id/juz/1
-//Get All Juz
+//Get All JuzQuran
 
-class Juz {
+class JuzQuran {
   int? juz;
   String? start;
   String? end;
   List<Verses>? verses;
 
-  Juz({this.juz, this.start, this.end, this.verses});
+  JuzQuran({this.juz, this.start, this.end, this.verses});
 
-  Juz.fromJson(Map<String, dynamic> json) {
+  JuzQuran.fromJson(Map<String, dynamic> json) {
     juz = json['juz'];
     start = json['start'];
     end = json['end'];
