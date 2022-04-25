@@ -272,27 +272,6 @@ class HomeView extends GetView<HomeController> {
                                   child: Text('${index + 1}'),
                                 ),
                               )),
-
-                          // Container(
-                          //   height: 50,
-                          //   width: 50,
-                          //   decoration: BoxDecoration(
-                          //       image: DecorationImage(
-                          //           image: AssetImage('assets/number.png'))),
-                          //   child: Center(
-                          //     child: Text('${index + 1}'),
-                          //   ),
-                          // ),
-
-                          // CircleAvatar(
-                          //   backgroundColor: kInactiveColor,
-                          //   child: Text(
-                          //     "${surah.number}",
-                          //     style: whiteTextStyle.copyWith(
-                          //       fontWeight: bold,
-                          //     ),
-                          //   ),
-                          // ),
                           title: Text(
                             'Juz  -  ${index + 1}',
                             style: blackTextStyle.copyWith(
