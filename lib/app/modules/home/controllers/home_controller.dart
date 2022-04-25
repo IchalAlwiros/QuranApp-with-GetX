@@ -23,8 +23,8 @@ class HomeController extends GetxController {
     }
   }
 
-  Future<List<Juz>> getAllJuz() async {
-    List<Juz> alljuz = [];
+  Future<List<JuzQuran>> getAllJuz() async {
+    List<JuzQuran> alljuz = [];
     for (var i = 1; i <= 30; i++) {
       Uri url = Uri.parse('https://api.quran.sutanlab.id/juz/$i');
       var response = await http.get(url);
@@ -32,7 +32,7 @@ class HomeController extends GetxController {
       Map<String, dynamic> data =
           (json.decode(response.body) as Map<String, dynamic>)['data'];
 
-      Juz juz = Juz.fromJson(data);
+      JuzQuran juz = JuzQuran.fromJson(data);
       alljuz.add(juz);
     }
     return alljuz;

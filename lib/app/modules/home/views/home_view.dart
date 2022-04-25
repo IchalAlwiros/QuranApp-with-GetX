@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quran_app/app/data/models/juz_models.dart' as juz;
 import 'package:flutter_quran_app/app/routes/app_pages.dart';
 import 'package:flutter_quran_app/app/theme/theme.dart';
 import 'package:flutter_quran_app/app/widgets/shimmer_loading.dart';
@@ -253,32 +254,75 @@ class HomeView extends GetView<HomeController> {
                     },
                   ),
                   // JUZ
-                  ListView.builder(
-                      itemCount: 30,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: Obx(() => Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        controller.isDarkMode.isTrue
-                                            ? 'assets/number.png'
-                                            : 'assets/number_dark.png'),
+                  //
+                  FutureBuilder<List<juz.JuzQuran>>(
+                      future: controller.getAllJuz(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return ListView.separated(
+                              itemBuilder: (context, index) => ShimmerSkelton(),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(
+                                    height: 10,
                                   ),
-                                ),
-                                child: Center(
-                                  child: Text('${index + 1}'),
-                                ),
-                              )),
-                          title: Text(
-                            'Juz  -  ${index + 1}',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: semiBold,
-                            ),
-                          ),
+                              itemCount: 8);
+                        }
+
+                        if (!snapshot.hasData) {
+                          return Text('Tidak Ada data');
+                        }
+                        return ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            juz.JuzQuran detailJuz = snapshot.data![index];
+                            {
+                              return ListTile(
+                                  onTap: (() {
+                                    Get.toNamed(Routes.DETAIL_JUZ,
+                                        arguments: detailJuz);
+                                  }),
+                                  leading: Obx(() => Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                controller.isDarkMode.isTrue
+                                                    ? 'assets/number.png'
+                                                    : 'assets/number_dark.png'),
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text('${index + 1}'),
+                                        ),
+                                      )),
+                                  title: Text(
+                                    'Juz  -  ${index + 1}',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: semiBold,
+                                    ),
+                                  ),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Mulai dari ${detailJuz.start}',
+                                        style: defaultTextStyle.copyWith(
+                                            color: kGreyColor),
+                                      ),
+                                      Text(
+                                        'Sampai${detailJuz.end}',
+                                        style: defaultTextStyle.copyWith(
+                                            color: kGreyColor),
+                                      ),
+                                    ],
+                                  ));
+                            }
+                          },
                         );
                       }),
                   Text('data3'),
