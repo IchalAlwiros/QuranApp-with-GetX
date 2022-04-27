@@ -8,6 +8,9 @@ import '../../../theme/theme.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
+
+  List<Surah> allSurah = []; //digunakan untuk menampung
+
   RxBool isDarkMode = false.obs;
 
   Future<List<Surah>> getAllSurah() async {
@@ -19,7 +22,8 @@ class HomeController extends GetxController {
     if (data == null || data.isEmpty) {
       return [];
     } else {
-      return data.map((e) => Surah.fromJson(e)).toList();
+      allSurah = data.map((e) => Surah.fromJson(e)).toList();
+      return allSurah;
     }
   }
 
