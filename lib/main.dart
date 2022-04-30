@@ -12,7 +12,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       theme: box.read('themeDark') == null ? themeLight : themeDark,
-      darkTheme: themeDark,
+      // darkTheme: themeDark,
       debugShowCheckedModeBanner: false,
       title: "Application",
       initialRoute: Routes.HOME,
