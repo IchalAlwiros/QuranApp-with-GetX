@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_quran_app/app/data/models/juz_models.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -12,6 +14,24 @@ class HomeController extends GetxController {
   List<Surah> allSurah = []; //digunakan untuk menampung
 
   RxBool isDarkMode = false.obs;
+
+  void changeThemeMode() async {
+    if (Get.isDarkMode)
+      Get.changeThemeMode(ThemeMode.light);
+    else
+      Get.changeThemeMode(ThemeMode.dark);
+    isDarkMode.toggle();
+
+    final box = GetStorage();
+
+    if (Get.isDarkMode) {
+      //dark => light
+      box.remove('themeDark');
+    } else {
+      //light => dark
+      box.write('themeDark', true);
+    }
+  }
 
   Future<List<Surah>> getAllSurah() async {
     Uri url = Uri.parse('https://api.quran.sutanlab.id/surah/');
